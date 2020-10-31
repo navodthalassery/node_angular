@@ -1,0 +1,44 @@
+<h2>Add Flight</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="number">Number</label>
+        <input type="text" formControlName="number" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.number.errors }" />
+        <div *ngIf="submitted && f.number.errors" class="invalid-feedback">
+            <div *ngIf="f.number.errors.required">Number is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="place_from">Place From</label>
+        <input type="text" formControlName="place_from" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.place_from.errors }" />
+        <div *ngIf="submitted && f.place_from.errors" class="invalid-feedback">
+            <div *ngIf="f.place_from.errors.required">Place From is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="place_to">Place To</label>
+        <input type="text" formControlName="place_to" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.place_to.errors }" />
+        <div *ngIf="submitted && f.place_to.errors" class="invalid-feedback">
+            <div *ngIf="f.place_to.errors.required">Place To required</div>
+            <div *ngIf="f.place_to.errors.minlength">Place To must be at least 1 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <mat-form-field>
+            <input matInput type="datetime-local" placeholder="start date" formControlName="time_from"
+                class="form-control">
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+        <input matInput type="datetime-local" placeholder="end date" formControlName="time_to" class="form-control">
+    </mat-form-field>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Register
+        </button>
+        <a (click)="cancelClick()" class="btn btn-link">Cancel</a>
+    </div>
+</form>

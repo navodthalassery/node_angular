@@ -1,0 +1,28 @@
+<% if(typeof errors != 'undefined') { %>
+<% errors.forEach(function(error) { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%- error.msg %>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span area-hidden="true">&times;</span>
+    </button>
+<% }); %>
+<% } %>
+
+<% if(locals.success_msg != '') { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%- locals.success_msg %>
+    </div>
+<% } %>
+
+<% if(locals.error_msg != '') { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%- locals.error_msg %>
+    </div>
+<% } %>
+
+<% if(locals.error != '') { %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%- locals.error %>
+    </div>
+<% } %>
